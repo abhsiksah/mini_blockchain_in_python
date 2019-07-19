@@ -22,10 +22,10 @@ class Blockchain:
   
   # add block to blockchain `chain`
  def add_block(self, transactions):
-    previous_hash = (self.chain[len(self.chain)-1]).hash // we need the previos hash value for new hash value and -1 for length bcoz at 0 there will be genisis block
-    new_block = Block(transactions, previous_hash)   //this is the block object from Block class in different .py file
-    new_block.generate_hash()                          // new hash is generated
-    proof = self.proof_of_work(new_block)           // now whenever we need to add a new block we need proof of work so we will check for pow
+    previous_hash = (self.chain[len(self.chain)-1]).hash # we need the previos hash value for new hash value and -1 for length bcoz at 0 there will be genisis block
+    new_block = Block(transactions, previous_hash)   #this is the block object from Block class in different .py file
+    new_block.generate_hash()                          # new hash is generated
+    proof = self.proof_of_work(new_block)           # now whenever we need to add a new block we need proof of work so we will check for pow
     self.chain.append(new_block)
     return proof, new_block
 
@@ -43,8 +43,8 @@ class Blockchain:
   
   def proof_of_work(self,block, difficulty=2):
     proof = block.generate_hash()
-    while proof[:difficulty] != '0'*difficulty: // slice is used which tells the end till we need to check for 0 
+    while proof[:difficulty] != '0'*difficulty: # slice is used which tells the end till we need to check for 0 
       block.nonce += 1
       proof = block.generate_hash()
-    block.nonce = 0                             // we need to set it to 0 for other blocks
+    block.nonce = 0                             # we need to set it to 0 for other blocks
     return proof
