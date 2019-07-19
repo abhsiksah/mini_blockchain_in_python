@@ -25,7 +25,7 @@ class Blockchain:
     previous_hash = (self.chain[len(self.chain)-1]).hash # we need the previos hash value for new hash value and -1 for length bcoz at 0 there will be genisis block
     new_block = Block(transactions, previous_hash)   #this is the block object from Block class in different .py file
     new_block.generate_hash()                          # new hash is generated
-    proof = self.proof_of_work(new_block)           # now whenever we need to add a new block we need proof of work so we will check for pow
+    proof = self.proof_of_work(new_block)           # now whenever we need to add a new block we need proof of work 
     self.chain.append(new_block)
     return proof, new_block
 
